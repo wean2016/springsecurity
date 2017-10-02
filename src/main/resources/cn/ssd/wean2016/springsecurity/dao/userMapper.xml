@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ssd.wean2016.springsecurity.dao.UserMapper">
+
+    <select id="getUserFromDatabase"  resultMap="getUserFromDatabaseMap">
+        SELECT
+        `user`.username,
+        `user`.`password`,
+        `user`.role_id,
+        `user`.enable,
+        `user`.last_password_change,
+        `user`.enable,
+        role.auth
+        FROM
+        `user` ,
+        role
+        WHERE
+        `user`.role_id = role.role_id AND
+        `user`.username = #{username}
+    </select>
+
+    <resultMap id="getUserFromDatabaseMap" type="cn.ssd.wean2016.springsecurity.model.domain.User">
+        <id column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="last_password_change" property="lastPasswordChange"/>
+        <result column="auth" property="authorities"/>
+        <result column="enable" property="enable"/>
+    </resultMap>
+
+</mapper>
