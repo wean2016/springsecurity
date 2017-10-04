@@ -1,6 +1,7 @@
 package cn.ssd.wean2016.springsecurity.utils;
 
 import cn.ssd.wean2016.springsecurity.model.TokenDetail;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.log4j.Logger;
@@ -82,6 +83,42 @@ public class TokenUtils {
      */
     private Date generateCurrentDate() {
         return new Date(System.currentTimeMillis());
+    }
+
+    /**
+     * 从 token 中拿到 username
+     *
+     * @param token
+     * @return
+     */
+    public String getUsernameFromToken(String token) {
+        String username;
+        try {
+            final Claims claims = this.getClaimsFromToken(token);
+            username = claims.getSubject();
+        } catch (Exception e) {
+            username = null;
+        }
+        return username;
+    }
+
+    /**
+     * 解析 token 的主体 Claims
+     *
+     * @param token
+     * @return
+     */
+    private Claims getClaimsFromToken(String token) {
+        Claims claims;
+        try {
+            claims = Jwts.parser()
+                    .setSigningKey(this.secret.getBytes("UTF-8"))
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (Exception e) {
+            claims = null;
+        }
+        return claims;
     }
 
 }
