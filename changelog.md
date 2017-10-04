@@ -14,3 +14,9 @@
 
 接口的地址在 LoginController 类，可以自行研究
 
+3. step3
+
+输入 ```git checkout step3``` 即可前往
+
+完成了解析 token ，并从数据库中获取用户详细信息 userDetail 的功能
+
