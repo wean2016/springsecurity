@@ -1,7 +1,9 @@
 ---
 title: Spring Security 使用总结
 date: 2017-10-02 16:15:09
-tags: Spring Security
+tags:
+  - Spring Security
+  - json web token
 ---
 
 暑假的时候在学习了 Spring Security 并成功运用到了项目中。 在实践中摸索出了一套结合 json + jwt(json web token) + Spring Boot + Spring Security 技术的权限方案趁着国庆假期记录一下。
