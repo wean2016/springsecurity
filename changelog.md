@@ -31,3 +31,9 @@
 输入 ```git checkout step5``` 即可前往
 
 注册步骤四的拦截器，使它在 Spring Security 读取本次会话权限前将用户所具有的权限写入本次会话中
+
+6. step6
+
+输入 ```git checkout step6``` 即可前往
+
+完善 401 和 403 返回结果
